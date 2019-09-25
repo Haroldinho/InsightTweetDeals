@@ -14,14 +14,14 @@ import json
 import os
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
+from pyspark.sql import SQLContext
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        # always need to provide one folder argument to the functions
-        print("Usage: initial_spark_processing <folder>", file=sys.stderr)
-        sys.exit(-1)
-    folder_name = sys.argv[1]
-    spark = SparkSession.builder.appName("Initial App").getOrCreate()
-    sc = spark.sparkContext
-    tweetDF = spark.read.json(folder_name)
-    tweetDF.printSchema()
+	spark = SparkSession.builder.appName("Initial App").getOrCreate()
+	sc = spark.sparkContext
+	sqlcontext = SQLContext(sc)
+	#textFiles = sc.wholeTextFiles("s3n://insighttwitterdeals/Twitter_dumps/bz2_folder/")
+	#print(textFiles.collect())
+#	tweetDF = sqlcontext.read.json("s3a://insighttwitterdeals/Twitter_Streams/*.json")
+	tweetDF = sqlcontext.read.json("s3a://insighttwitterdeals/Twitter_dumps/bz2_folder/*/*/*/*")
+	tweetDF.printSchema()
