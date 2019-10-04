@@ -49,7 +49,7 @@ def save_to_parquet(sqlcontext, json_folder, month):
 
 
 def reduce_dataframe_to_essential_fields(df):
-	return df.select(col('created_at'),col('user.followers_count').alias('follower_count'), col('user.description').alias('description'), col('user.name').alias('username'),col('text'),col('timestamp_ms'),col('quote_count'),col('place.name').alias('location'),col('retweet_count'),col('quoted_status.retweeted').alias('retweeted')) 
+	return df.select(col('created_at'),col('user.followers_count').alias('follower_count'), col('user.description').alias('description'), col('user.name').alias('username'),col('text'),col('timestamp_ms'),col('quote_count'),col('place.name').alias('location'),col('retweet_count'),col('quoted_status.retweeted').alias('retweeted'), col('favorite_count')) 
 
 
 

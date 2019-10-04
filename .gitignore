@@ -1,2 +1,3 @@
 ./TestTwitterAPI/private_twitter_authentication_config.py
 private_twitter_authentication_config.py
+*.log

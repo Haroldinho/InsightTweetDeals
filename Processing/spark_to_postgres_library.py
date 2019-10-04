@@ -8,16 +8,14 @@ inspired by https://github.com/gauravsm31/Insight_Project/blob/master/postgres.p
 """
 
 from pyspark.sql import DataFrameWriter
-
+import os
 
 class PostgresConnector(object):
 	def __init__(self):
 		self.database_name = 'postgres'
-		self.hostname ='ip-10-0-0-7'
-		self.server_hostname='ec2-54-218-246-42.us-west-2.compute.amazonaws.com'
-		self.hostname_dns = 'ec2-35-166-72-17.us-west-2.compute.amazonaws.com'
+		self.hostname = os.environ['POSTGRESQL_HOST']
 		self.url_connect = "jdbc:postgresql://{hostname}:5412/{db}".format(hostname=self.hostname, db=self.database_name)
-		self.properties = {"user":'shiny', "password":'suzyq', "driver":"org.postgresql.Driver"}
+		self.properties = {"user":os.environ['POSTGRESQL_USER'], "password":os.environ['POSTGRESQL_PASSWD'], "driver":"org.postgresql.Driver"}
 
 	def get_writer(self, df):
 		return DataFrameWriter(df)

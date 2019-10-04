@@ -81,7 +81,7 @@ app.layout = html.Div(children=[
                 	columns=[{"name": i, "id": i, "deletable":True, "selectable":True} for i in full_table_df.columns],
 			filter_action="native",
 			sort_action="native",
-			sort_mode="multi",
+			sort_mode="single",
 			selected_columns=[],
 			column_selectable="single",
 			fixed_rows={'headers':True, 'data':0},
