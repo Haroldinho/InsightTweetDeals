@@ -10,7 +10,7 @@ test_example2 = "AUKEY's dual-port 2.4A charger is what Apple should have includ
 test_example1 = "PUMA Men's Contrast Pants for $13 + free shipping - https://t.co/XQ6b5JgJWF" 
 test_example0 = u'Samsonite Novex 16" Laptop Backpack for $50 + free shipping - https://t.co/b18e2c3lP4'
 
-# !! The following package must be loaded from the command line with the command: python -m spacy download en_core_web_lg
+# !! The following package must be first downloaded from the command line with the command: python -m spacy download en_core_web_lg
 nlp = spacy.load("en_core_web_sm")
 
 doc0 = nlp(test_example0)

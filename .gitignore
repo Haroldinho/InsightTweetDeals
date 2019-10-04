@@ -1,3 +1,7 @@
 ./TestTwitterAPI/private_twitter_authentication_config.py
 private_twitter_authentication_config.py
+Processing/private_access_info.py
 *.log
+*.pyc
+metastore_db/*
+Processing/metastore_db/*
