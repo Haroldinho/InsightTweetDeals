@@ -23,7 +23,10 @@ from pyspark.sql.types import DoubleType, TimestampType, StringType, LongType, I
 from spacy_ned_library import add_product_column_to_df, add_brand_column_to_df	
 
 spark = SparkSession.builder.appName("Initial App").getOrCreate()
+spark.conf.set("spark.sql.execution.arrow.enabled", "true")
+spark.conf.set("spark.python.worker.reuse", "true")
 sc = spark.sparkContext
+sc.addPyFile('/home/ubuntu/InsightTweetDeals/Processing/spacy_ned_library.py')
 sc.setLogLevel('WARN')
 logging.basicConfig(filename="spark_processing.log", level=logging.DEBUG,
 	filemode="w", format="%(asctime)s: %(process)d - %(levelname)s - %(message)s")

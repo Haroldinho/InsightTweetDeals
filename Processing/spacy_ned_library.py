@@ -44,7 +44,8 @@ def show_brand(named_entity_dictionary):
 
 def get_named_entity(text):
 	named_entity = {"ORG":[],"PRODUCT":[],"WORK_OF_ART":[],"PERSON":[]}
-	doc = SPACY_MODEL(text)
+	nlp = get_spacy_model()
+	doc = nlp(text)
 	for ent in doc.ents:
 		if ent.label_ in named_entity.keys():
 			named_entity[ent.label_].append(ent.text)

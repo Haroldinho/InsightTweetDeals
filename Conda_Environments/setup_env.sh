@@ -17,3 +17,6 @@ echo "source activate spacypython" >> "/home/ubuntu/.bashrc"
 source /home/ubuntu/.bashrc
 source ~/miniconda3/bin/activate
 source activate spacypython
+python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_md
+python -m spacy download en_core_web_lg
