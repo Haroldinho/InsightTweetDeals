@@ -18,7 +18,7 @@ def get_spacy_model():
 	global SPACY_MODEL
 	if not SPACY_MODEL:
 		# other options for this package are "en_core_web_lg" and "en_core_web_md"
-		SPACY_MODEL = spacy.load("en_core_web_sm")
+		SPACY_MODEL = spacy.load("en_core_web_md")
 	return SPACY_MODEL
 
 def show_product_name(named_entity_dictionary):
@@ -67,3 +67,9 @@ def add_brand_column_to_df(df):
 	df = df.withColumn("brand", to_brand_udf('text'))
 	return df
 
+def add_product_brand_column_to_df(df):
+	to_product_name_udf = udf(get_product_name, StringType())
+	to_brand_udf = udf(get_brand, StringType())
+	df = df.withColumn("brand", to_brand_udf('text')).withColumn("product", to_product_name_udf('text'))
+	return df
+	

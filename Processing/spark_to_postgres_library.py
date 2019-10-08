@@ -14,7 +14,7 @@ class PostgresConnector(object):
 	def __init__(self):
 		self.database_name = 'postgres'
 		self.hostname = os.environ['POSTGRESQL_HOST']
-		self.url_connect = "jdbc:postgresql://{hostname}:5412/{db}".format(hostname=self.hostname, db=self.database_name)
+		self.url_connect = "jdbc:postgresql://{hostname}:5412/{db}?reWriteBatchedInserts=true".format(hostname=self.hostname, db=self.database_name)
 		self.properties = {"user":os.environ['POSTGRESQL_USER'], "password":os.environ['POSTGRESQL_PASSWD'], "driver":"org.postgresql.Driver"}
 
 	def get_writer(self, df):
@@ -27,6 +27,12 @@ class PostgresConnector(object):
 
 def write_to_postgres(out_df, table_name):
 	table = table_name
+	mode = "write"
+	connector = PostgresConnector()
+	connector.write(out_df, table, mode)
+
+def append_to_postgres(out_df, table_name):
+	table=table_name
 	mode = "append"
 	connector = PostgresConnector()
 	connector.write(out_df, table, mode)
