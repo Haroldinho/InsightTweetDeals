@@ -5,3 +5,6 @@ Processing/private_access_info.py
 *.pyc
 metastore_db/*
 Processing/metastore_db/*
+*.swp
+*.pem
+Procfile

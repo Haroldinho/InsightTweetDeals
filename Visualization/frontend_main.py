@@ -58,10 +58,7 @@ app.layout = html.Div(children=[
 	html.H1(children='@DealsListener'),
 	html.P(children='Analyzing the history of promotions on Twitter.'),
 
-	html.Div(style={'margin' : '10px 10%'},children=[
-		html.Div(children=html.H5(children='''
-                	Full Text
-        	''')),
+	html.Div(style={'margin' : '2px 5%'},children=[
         	dash_table.DataTable(
                 	id='main-table',
                 	style_data={'whiteSpace': 'normal'},

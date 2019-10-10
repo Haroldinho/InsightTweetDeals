@@ -81,9 +81,7 @@ if __name__ == "__main__":
 		parquet_folder_name = 	 "s3a://{s3_bucket}/Twitter_dumps/Parquet_folder/parquet_file_{month:02d}/*".format(s3_bucket=os.environ['S3_FOLDER'], month=m)
 		tweet_df = read_parquet_folder(parquet_folder_name)
 		tweet_df = process_raw_df(tweet_df)
-		tweet_df = tweet_df.repartition(6)
-		# display 15 entries
-		#final_df =  end_df.select('created_at', 'text', 'Price', 'username', 'product', 'brand', 'url', 'follower_count')
+		tweet_df = tweet_df.repartition(5)
 		append_to_postgres(tweet_df, "my_table")
 
 
