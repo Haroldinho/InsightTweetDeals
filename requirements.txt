@@ -24,7 +24,7 @@ MarkupSafe==1.1.1
 msgpack==0.6.1
 msgpack-numpy==0.4.3.2
 murmurhash==1.0.2
-numpy==1.17.2
+numpy==1.22.0
 pandas==0.25.1
 plac==0.9.6
 plotly==4.1.1
